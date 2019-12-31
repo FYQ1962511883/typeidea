@@ -21,6 +21,7 @@ class Link(models.Model):
         verbose_name = verbose_name_plural = '友链'
 
 
+
 class SiderBar(models.Model):
     STATUS_SHOW = 1
     STATUS_HIDE = 0
@@ -44,3 +45,6 @@ class SiderBar(models.Model):
                                          verbose_name="状态")
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="作者")
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+
+    def __str__(self):
+        return self.title
