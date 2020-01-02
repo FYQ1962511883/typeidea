@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+
 class Link(models.Model):
     STATUS_NORMAL = 1
     STATUS_DELETE = 0
@@ -27,8 +27,8 @@ class SideBar(models.Model):
     STATUS_SHOW = 1
     STATUS_HIDE = 0
     STATUS_ITEMS = (
-        (STATUS_SHOW, '正常'),
-        (STATUS_HIDE, '删除'),
+        (STATUS_SHOW, '展示'),
+        (STATUS_HIDE, '隐藏'),
     )
     SIDE_TYPE = (
         (1, 'HTML'),
@@ -46,6 +46,9 @@ class SideBar(models.Model):
                                          verbose_name="状态")
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="作者")
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
+
+    class Meta:
+        verbose_name = verbose_name_plural = "侧边栏"
 
     def __str__(self):
         return self.title
